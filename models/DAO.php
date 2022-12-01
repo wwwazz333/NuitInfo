@@ -117,7 +117,7 @@ abstract class DAO
 
   //retourne un tableau 2D avec éventuellement plusieurs enregistrements
   //ou false
-  protected function queryAll($sql, $args = null)
+  public function queryAll($sql, $args = null)
   {
  	try
 	{

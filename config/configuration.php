@@ -4,7 +4,7 @@ const DEBUG = true; // production : false; dev : true
 
 // Accès base de données
 const BD_HOST = 'localhost';
-const BD_DBNAME = 'test';
+const BD_DBNAME = 'nuitinfo';
 const BD_USER = 'root';
 const BD_PWD = '';
 
