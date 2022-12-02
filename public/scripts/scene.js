@@ -118,7 +118,7 @@ async function startGame() {
 
 				setTexts(d.question, d.gauche.txt, d.millieu.txt, d.droite.txt);
 				render(lastScene)
-			}else{
+			} else {
 				alert("Faux!");
 			}
 

@@ -9,5 +9,5 @@ document.getElementById("game").addEventListener("click", async (ev) => {
 	}
 
 
-	startGame();
+	startGame()
 })
