@@ -54,6 +54,8 @@ async function startGame() {
 			render(newScene);
 			reloadText()
 		}
+
+		canClick = true;
 	}
 
 	function loadObj(objName) {
@@ -104,9 +106,11 @@ async function startGame() {
 
 		renderer.render(lastScene, camera);
 	}
+
+	var canClick = true;
 	function clickObj() {
-		if (currentPorte != null) {
-			var rep;
+		if (currentPorte != null ) {
+			var rep; 
 			switch (currentPorte.object.geometry.name) {
 				case "p_bleue":
 					rep = dataQuestion[currQuestion].gauche.rep;
@@ -144,6 +148,7 @@ async function startGame() {
 
 					setTexts(d.question, d.gauche.txt, d.millieu.txt, d.droite.txt);
 					render(lastScene)
+					canClick = false;
 				}
 
 
@@ -176,8 +181,8 @@ async function startGame() {
 
 
 		addMillieu(milleu, 0, 6, 0, PI, false);//milleiu
-		addGauche(gauche, 4, 4.5, -3.5, PI / 4 + PI, false);//gauche
-		addDroite(droite, -1, 3.5, -6, 2.55 * PI, false);//sdroite
+		addGauche(gauche, 3.3, 3.7, -3.5, PI / 4 + PI, false);//gauche
+		addDroite(droite, -1.5, 3.3, -6, 2.7 * PI, false);//sdroite
 
 		addQuestion(question, 0, 0.30, -5.5, PI, true);//questoin
 	}
@@ -228,7 +233,6 @@ async function startGame() {
 
 
 			textMesh.geometry.applyMatrix(new THREE.Matrix4().makeTranslation(-center.x, -center.y, -center.z));
-
 			lastScene.add(textMesh);
 			textMesh.position.set(x - center.x, y - center.y, z - center.z); // position text here x, y, z
 
