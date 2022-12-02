@@ -1,0 +1,68 @@
+[
+	{
+		"question": "Qu’est-ce que le VIH ?",
+		"gauche": { "txt": "une infection au rein", "rep": false },
+		"droite": {
+			"txt": "Une douleur musculaire qui survient après le sexe",
+			"rep": false
+		},
+		"millieu": {
+			"txt": "un virus affaiblissant le système immunitaire",
+			"rep": true
+		}
+	},
+	{
+		"question": "Comment le VIH se transmet-il ?",
+		"gauche": { "txt": "Transmission sexuel", "rep": true },
+		"droite": { "txt": "Par voix oral", "rep": false },
+		"millieu": { "txt": "Par la pensée", "rep": false }
+	},
+	{
+		"question": "Quel est le risque de transmission du VIH en embrassant sur la bouche ou avec la langue ?",
+		"gauche": { "txt": "Il est inexistant", "rep": true },
+		"droite": { "txt": "C'est très probable", "rep": false },
+		"millieu": { "txt": "C'est obligatoire", "rep": false }
+	},
+	{
+		"question": "Avoir des relations sexuelles avec une personne vivant avec le VIH est-il sans danger ?",
+		"gauche": { "txt": "Oui, si elle à un traitement", "rep": true },
+		"droite": { "txt": "Oui, dans tous les cas", "rep": false },
+		"millieu": { "txt": "Non, il y à toujours un risque", "rep": false }
+	},
+	{
+		"question": "Deux personnes vivant avec le VIH souhaitent avoir des relations sexuelles exclusives non protégées. Est-ce sans danger ?",
+		"gauche": { "txt": "Absolument", "rep": false },
+		"droite": {
+			"txt": "Il vaut mieux évité (même avec traitement)",
+			"rep": true
+		},
+		"millieu": { "txt": "Vous allez mourrir", "rep": false }
+	},
+	{
+		"question": "Comment éviter l'infection par le VIH ?",
+		"gauche": { "txt": "Ne pas avoir de relation sexuelle", "rep": false },
+		"droite": {
+			"txt": "Ne pas avoir de relation sexuel avec des toxicomanes",
+			"rep": false
+		},
+		"millieu": {
+			"txt": "Utilisation systématique et correcte d’un préservatif",
+			"rep": true
+		}
+	},
+	{
+		"question": "Les préservatifs sont-ils efficaces pour lutter contre le VIH ?",
+		"gauche": { "txt": "oui", "rep": true },
+		"droite": { "txt": "non, car il peuvent craquer", "rep": false },
+		"millieu": { "txt": "non", "rep": false }
+	},
+	{
+		"question": "Comment éviter la transmission de la mère à l’enfant ?",
+		"gauche": { "txt": "avorter", "rep": false },
+		"droite": { "txt": "ne pas avoir d'enfant", "rep": false },
+		"millieu": {
+			"txt": "faciliter l'accès au depistage pour les parents",
+			"rep": true
+		}
+	}
+]
