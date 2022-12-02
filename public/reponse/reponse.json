@@ -42,7 +42,7 @@
 		"question": "Comment éviter l'infection par le VIH ?",
 		"gauche": { "txt": "Ne pas avoir de relation sexuelle", "rep": false },
 		"droite": {
-			"txt": "Ne pas avoir de relation sexuel avec des toxicomanes",
+			"txt": "Ne pas avoir de relation sexuelle avec des toxicomanes",
 			"rep": false
 		},
 		"millieu": {
