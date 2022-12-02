@@ -2,10 +2,14 @@
 import { FontLoader, TextGeometry } from 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.module.js';
 
 function backReturn(str) {
+	let strFin = str;
 	if (str.length >= 30) {
-		return str.substring(0, 30) + "\n" + str.substring(30);
+		strFin = str.substring(0, 30) + "\n" + str.substring(30);
 	}
-	return str;
+	if (str.length >= 60) {
+		strFin += "\n" + str.substring(60);
+	}
+	return strFin;
 }
 async function startGame() {
 	var dataQuestion;
@@ -41,7 +45,7 @@ async function startGame() {
 
 	var loader = new THREE.ObjectLoader();
 	async function loadScene(nameScene) {
-		var jo = await fetch("scenes/scene_1_portes.json");
+		var jo = await fetch(nameScene);
 		if (jo.ok) {
 			var jj = await jo.json();
 			const newScene = loader.parse(jj);
@@ -61,7 +65,8 @@ async function startGame() {
 
 
 
-	loadScene('./assets/scenes/scene_1_portes.json');
+	loadScene('scenes/question.json');
+
 
 
 
@@ -120,10 +125,28 @@ async function startGame() {
 			if (rep) {
 				currQuestion++;
 
-				let d = dataQuestion[currQuestion];
+				if (currQuestion >= dataQuestion.length) {
+					console.log("wine");
+					while (lastScene.children.length > 0) {
+						lastScene.remove(lastScene.children[0]);
+					}
 
-				setTexts(d.question, d.gauche.txt, d.millieu.txt, d.droite.txt);
-				render(lastScene)
+					loadScene("scenes/win.json");
+					camera.position.z -= 3;
+					camera.position.y += 3;
+					camera.position.x += 1;
+					camera.rotation.x -= 0.5;
+					camera.rotation.y += 0.5;
+					texts = []
+					reloadText();
+				} else {
+					let d = dataQuestion[currQuestion];
+
+					setTexts(d.question, d.gauche.txt, d.millieu.txt, d.droite.txt);
+					render(lastScene)
+				}
+
+
 			} else {
 				alert("Faux!");
 			}
@@ -156,7 +179,7 @@ async function startGame() {
 		addGauche(gauche, 4, 4.5, -3.5, PI / 4 + PI, false);//gauche
 		addDroite(droite, -1, 3.5, -6, 2.55 * PI, false);//sdroite
 
-		addQuestion(question, 0, 1, -5.5, PI, true);//questoin
+		addQuestion(question, 0, 0.30, -5.5, PI, true);//questoin
 	}
 
 	let d = dataQuestion[currQuestion];
@@ -190,7 +213,7 @@ async function startGame() {
 
 
 			var textMesh = new THREE.Mesh(textGeometry, [
-				new THREE.MeshPhongMaterial({ emissive: "grey" }), new THREE.MeshPhongMaterial({ emissive: "grey" })
+				new THREE.MeshPhongMaterial({ emissive: "blue" }), new THREE.MeshPhongMaterial({ emissive: "blue" })
 			]);
 
 
@@ -207,10 +230,8 @@ async function startGame() {
 			textMesh.geometry.applyMatrix(new THREE.Matrix4().makeTranslation(-center.x, -center.y, -center.z));
 
 			lastScene.add(textMesh);
-			console.log(center);
 			textMesh.position.set(x - center.x, y - center.y, z - center.z); // position text here x, y, z
 
-			console.log("textMesh added to scene");
 			textMesh.castShadow = true; // object can cast shadows (default = false)
 			textMesh.receiveShadow = true; // object can receive shadows (default= false)
 
@@ -221,17 +242,17 @@ async function startGame() {
 		loaderFont.load('/font/roboto_regular.json', function (font) {
 			const textGeometry = new TextGeometry(backReturn(str.replaceAll(" ", "\r\r")), {
 				font: font,
-				size: 0.25,
+				size: 0.35,
 				height: 0.001,
 				bevelEnabled: true,
-				bevelSize: 0.00001,
+				bevelSize: 0.01,
 				bevelThickness: 0.01,
 
 			});
 
 
 			var textMesh = new THREE.Mesh(textGeometry, [
-				new THREE.MeshPhongMaterial({ emissive: "grey" }), new THREE.MeshPhongMaterial({ emissive: "grey" })
+				new THREE.MeshPhongMaterial({ emissive: "yellow" }), new THREE.MeshPhongMaterial({ emissive: "yellow" })
 			]);
 
 
@@ -248,10 +269,8 @@ async function startGame() {
 			textMesh.geometry.applyMatrix(new THREE.Matrix4().makeTranslation(-center.x, -center.y, -center.z));
 
 			lastScene.add(textMesh);
-			console.log(center);
 			textMesh.position.set(x - center.x, y - center.y, z - center.z); // position text here x, y, z
 
-			console.log("textMesh added to scene");
 			textMesh.castShadow = true; // object can cast shadows (default = false)
 			textMesh.receiveShadow = true; // object can receive shadows (default= false)
 
@@ -272,7 +291,7 @@ async function startGame() {
 
 
 			var textMesh = new THREE.Mesh(textGeometry, [
-				new THREE.MeshPhongMaterial({ emissive: "grey" }), new THREE.MeshPhongMaterial({ emissive: "grey" })
+				new THREE.MeshPhongMaterial({ emissive: "blue" }), new THREE.MeshPhongMaterial({ emissive: "blue" })
 			]);
 
 
@@ -289,10 +308,8 @@ async function startGame() {
 			textMesh.geometry.applyMatrix(new THREE.Matrix4().makeTranslation(-center.x, -center.y, -center.z));
 
 			lastScene.add(textMesh);
-			console.log(center);
 			textMesh.position.set(x - center.x, y - center.y, z - center.z); // position text here x, y, z
 
-			console.log("textMesh added to scene");
 			textMesh.castShadow = true; // object can cast shadows (default = false)
 			textMesh.receiveShadow = true; // object can receive shadows (default= false)
 
@@ -313,7 +330,7 @@ async function startGame() {
 
 
 			var textMesh = new THREE.Mesh(textGeometry, [
-				new THREE.MeshPhongMaterial({ emissive: "grey" }), new THREE.MeshPhongMaterial({ emissive: "grey" })
+				new THREE.MeshPhongMaterial({ emissive: "white" }), new THREE.MeshPhongMaterial({ emissive: "white" })
 			]);
 
 
@@ -330,10 +347,8 @@ async function startGame() {
 			textMesh.geometry.applyMatrix(new THREE.Matrix4().makeTranslation(-center.x, -center.y, -center.z));
 
 			lastScene.add(textMesh);
-			console.log(center);
 			textMesh.position.set(x - center.x, y - center.y, z - center.z); // position text here x, y, z
 
-			console.log("textMesh added to scene");
 			textMesh.castShadow = true; // object can cast shadows (default = false)
 			textMesh.receiveShadow = true; // object can receive shadows (default= false)
 
@@ -354,7 +369,7 @@ async function startGame() {
 
 
 			var textMesh = new THREE.Mesh(textGeometry, [
-				new THREE.MeshPhongMaterial({ emissive: "grey" }), new THREE.MeshPhongMaterial({ emissive: "grey" })
+				new THREE.MeshPhongMaterial({ emissive: "white" }), new THREE.MeshPhongMaterial({ emissive: "white" })
 			]);
 
 
@@ -371,10 +386,8 @@ async function startGame() {
 			textMesh.geometry.applyMatrix(new THREE.Matrix4().makeTranslation(-center.x, -center.y, -center.z));
 
 			lastScene.add(textMesh);
-			console.log(center);
 			textMesh.position.set(x - center.x, y - center.y, z - center.z); // position text here x, y, z
 
-			console.log("textMesh added to scene");
 			textMesh.castShadow = true; // object can cast shadows (default = false)
 			textMesh.receiveShadow = true; // object can receive shadows (default= false)
 

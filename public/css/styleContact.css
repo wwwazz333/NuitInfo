@@ -5,6 +5,13 @@ body {
   overflow: hidden;
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 #button {
   position: absolute;
   white-space: nowrap;
