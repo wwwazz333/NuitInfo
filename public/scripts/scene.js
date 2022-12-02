@@ -156,6 +156,8 @@ async function startGame() {
 	setTexts(d.question, d.gauche.txt, d.millieu.txt, d.droite.txt);
 
 
+// 	let measure = new THREE.Vector3();
+// let box = colladaModel.getSize(measure);
 
 	function getCenterPoint(mesh) {
 		var geometry = mesh.geometry;
