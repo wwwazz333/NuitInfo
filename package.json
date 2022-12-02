@@ -1,0 +1,25 @@
+{
+  "name": "threejs_question",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "three": "^0.147.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wwwazz333/NuitInfo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wwwazz333/NuitInfo/issues"
+  },
+  "homepage": "https://github.com/wwwazz333/NuitInfo#readme",
+  "description": ""
+}
