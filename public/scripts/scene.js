@@ -1,6 +1,12 @@
 
 import { FontLoader, TextGeometry } from 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.module.js';
 
+function backReturn(str) {
+	if (str.length >= 30) {
+		return str.substring(0, 30) + "\n" + str.substring(30);
+	}
+	return str;
+}
 async function startGame() {
 	var dataQuestion;
 	var currQuestion = 0;
@@ -11,7 +17,7 @@ async function startGame() {
 
 
 	const scene = new THREE.Scene();
-	const camera = new THREE.PerspectiveCamera(90, window.innerWidth / window.innerHeight, 0.1, 1000);
+	const camera = new THREE.PerspectiveCamera(100, window.innerWidth / window.innerHeight, 0.1, 1000);
 
 	const renderer = new THREE.WebGLRenderer();
 	renderer.setSize(window.innerWidth, window.innerHeight);
@@ -144,11 +150,11 @@ async function startGame() {
 			lastScene.remove(txt);
 		}
 
-		addText(milleu, -2.7, 5, 0, PI, false);//milleiu
-		addText(gauche, 2.5, 4, -3, PI / 4 + PI, false);//gauche
-		addText(droite, -3, 4, -6, 2.55 * PI, false);//sdroite
+		addText(milleu, 0, 6, 0, PI, false);//milleiu
+		addText(gauche, 4, 4.5, -3.5, PI / 4 + PI, false);//gauche
+		addText(droite, -1, 3.5, -6, 2.55 * PI, false);//sdroite
 
-		addText(question, -1, 1, -4, PI, true);//questoin
+		addText(question, 0, 1, -5.5, PI, true);//questoin
 	}
 
 	let d = dataQuestion[currQuestion];
@@ -156,21 +162,21 @@ async function startGame() {
 	setTexts(d.question, d.gauche.txt, d.millieu.txt, d.droite.txt);
 
 
-// 	let measure = new THREE.Vector3();
-// let box = colladaModel.getSize(measure);
+
 
 	function getCenterPoint(mesh) {
 		var geometry = mesh.geometry;
 		geometry.computeBoundingBox();
 		var center = new THREE.Vector3();
 		geometry.boundingBox.getCenter(center);
+
 		mesh.localToWorld(center);
 		return center;
 	}
 
 	function addText(str, x, y, z, rot, question) {
 		loaderFont.load('/font/roboto_regular.json', function (font) {
-			const textGeometry = new TextGeometry(str.replaceAll(" ", "\r\r"), {
+			const textGeometry = new TextGeometry(backReturn(str.replaceAll(" ", "\r\r")), {
 				font: font,
 				size: 0.2,
 				height: 0.001,
@@ -190,6 +196,8 @@ async function startGame() {
 			var textMesh = new THREE.Mesh(textGeometry, [
 				new THREE.MeshPhongMaterial({ emissive: "grey" }), new THREE.MeshPhongMaterial({ emissive: "grey" })
 			]);
+
+
 			texts.push(textMesh);
 			var center = getCenterPoint(textMesh);
 			textMesh.geometry.applyMatrix(new THREE.Matrix4().makeTranslation(-center.x, -center.y, -center.z));
@@ -203,7 +211,8 @@ async function startGame() {
 			textMesh.geometry.applyMatrix(new THREE.Matrix4().makeTranslation(-center.x, -center.y, -center.z));
 
 			lastScene.add(textMesh);
-			textMesh.position.set(x, y, z); // position text here x, y, z
+			console.log(center);
+			textMesh.position.set(x - center.x, y - center.y, z - center.z); // position text here x, y, z
 
 			console.log("textMesh added to scene");
 			textMesh.castShadow = true; // object can cast shadows (default = false)
