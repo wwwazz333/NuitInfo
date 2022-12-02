@@ -5,6 +5,7 @@ var app = express();
 app.use(express.static('public'))
 app.use('/css', express.static(__dirname + "public/css"));
 app.use('/font', express.static(__dirname + "public/font"));
+app.use('/html', express.static(__dirname + "public/html"));
 
 app.use('/build/', express.static(__dirname + "node_modules/three/build"));
 app.use('/jsm/', express.static(__dirname + "node_modules/three/exemples/jsm"));
