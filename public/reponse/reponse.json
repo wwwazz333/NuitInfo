@@ -1,21 +1,21 @@
 [
 	{
 		"question": "Qu’est-ce que le VIH ?",
-		"gauche": { "txt": "une infection au rein", "rep": false },
+		"gauche": { "txt": "Une infection au rein", "rep": false },
 		"droite": {
 			"txt": "Une douleur musculaire qui survient après le sexe",
 			"rep": false
 		},
 		"millieu": {
-			"txt": "un virus affaiblissant le système immunitaire",
+			"txt": "Un virus affaiblissant le système immunitaire",
 			"rep": true
 		}
 	},
 	{
 		"question": "Comment le VIH se transmet-il ?",
-		"gauche": { "txt": "Transmission sexuel", "rep": true },
-		"droite": { "txt": "Par voix oral", "rep": false },
-		"millieu": { "txt": "Par la pensée", "rep": false }
+		"gauche": { "txt": "Transmission sexuelle", "rep": true },
+		"droite": { "txt": "Par voie orale", "rep": false },
+		"millieu": { "txt": "Par la salive", "rep": false }
 	},
 	{
 		"question": "Quel est le risque de transmission du VIH en embrassant sur la bouche ou avec la langue ?",

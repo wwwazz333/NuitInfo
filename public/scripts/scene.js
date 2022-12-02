@@ -150,11 +150,13 @@ async function startGame() {
 			lastScene.remove(txt);
 		}
 
-		addText(milleu, 0, 6, 0, PI, false);//milleiu
-		addText(gauche, 4, 4.5, -3.5, PI / 4 + PI, false);//gauche
-		addText(droite, -1, 3.5, -6, 2.55 * PI, false);//sdroite
 
-		addText(question, 0, 1, -5.5, PI, true);//questoin
+
+		addMillieu(milleu, 0, 6, 0, PI, false);//milleiu
+		addGauche(gauche, 4, 4.5, -3.5, PI / 4 + PI, false);//gauche
+		addDroite(droite, -1, 3.5, -6, 2.55 * PI, false);//sdroite
+
+		addQuestion(question, 0, 1, -5.5, PI, true);//questoin
 	}
 
 	let d = dataQuestion[currQuestion];
@@ -181,14 +183,8 @@ async function startGame() {
 				size: 0.2,
 				height: 0.001,
 				bevelEnabled: true,
-
-				// curveSegments: 0,
-				// bevelEnabled: true,
 				bevelSize: 0.00001,
 				bevelThickness: 0.01,
-				// bevelSize: 0,
-				// bevelOffset: 0,
-				// bevelSegments: 1
 
 			});
 
@@ -218,11 +214,180 @@ async function startGame() {
 			textMesh.castShadow = true; // object can cast shadows (default = false)
 			textMesh.receiveShadow = true; // object can receive shadows (default= false)
 
-			// camera.lookAt(textMesh.position);
+			render(lastScene)
+		});
+	}
+	function addMillieu(str, x, y, z, rot, question) {
+		loaderFont.load('/font/roboto_regular.json', function (font) {
+			const textGeometry = new TextGeometry(backReturn(str.replaceAll(" ", "\r\r")), {
+				font: font,
+				size: 0.25,
+				height: 0.001,
+				bevelEnabled: true,
+				bevelSize: 0.00001,
+				bevelThickness: 0.01,
+
+			});
+
+
+			var textMesh = new THREE.Mesh(textGeometry, [
+				new THREE.MeshPhongMaterial({ emissive: "grey" }), new THREE.MeshPhongMaterial({ emissive: "grey" })
+			]);
+
+
+			texts.push(textMesh);
+			var center = getCenterPoint(textMesh);
+			textMesh.geometry.applyMatrix(new THREE.Matrix4().makeTranslation(-center.x, -center.y, -center.z));
+
+			if (!question)
+				textMesh.rotation.set(0, rot, 0);
+			else
+				textMesh.rotation.set(PI / 3, rot, 0);
+
+
+			textMesh.geometry.applyMatrix(new THREE.Matrix4().makeTranslation(-center.x, -center.y, -center.z));
+
+			lastScene.add(textMesh);
+			console.log(center);
+			textMesh.position.set(x - center.x, y - center.y, z - center.z); // position text here x, y, z
+
+			console.log("textMesh added to scene");
+			textMesh.castShadow = true; // object can cast shadows (default = false)
+			textMesh.receiveShadow = true; // object can receive shadows (default= false)
 
 			render(lastScene)
 		});
 	}
+	function addGauche(str, x, y, z, rot, question) {
+		loaderFont.load('/font/roboto_regular.json', function (font) {
+			const textGeometry = new TextGeometry(backReturn(str.replaceAll(" ", "\r\r")), {
+				font: font,
+				size: 0.2,
+				height: 0.001,
+				bevelEnabled: true,
+				bevelSize: 0.00001,
+				bevelThickness: 0.05,
+
+			});
+
+
+			var textMesh = new THREE.Mesh(textGeometry, [
+				new THREE.MeshPhongMaterial({ emissive: "grey" }), new THREE.MeshPhongMaterial({ emissive: "grey" })
+			]);
+
+
+			texts.push(textMesh);
+			var center = getCenterPoint(textMesh);
+			textMesh.geometry.applyMatrix(new THREE.Matrix4().makeTranslation(-center.x, -center.y, -center.z));
+
+			if (!question)
+				textMesh.rotation.set(0, rot, 0);
+			else
+				textMesh.rotation.set(PI / 3, rot, 0);
+
+
+			textMesh.geometry.applyMatrix(new THREE.Matrix4().makeTranslation(-center.x, -center.y, -center.z));
+
+			lastScene.add(textMesh);
+			console.log(center);
+			textMesh.position.set(x - center.x, y - center.y, z - center.z); // position text here x, y, z
+
+			console.log("textMesh added to scene");
+			textMesh.castShadow = true; // object can cast shadows (default = false)
+			textMesh.receiveShadow = true; // object can receive shadows (default= false)
+
+			render(lastScene)
+		});
+	}
+	function addDroite(str, x, y, z, rot, question) {
+		loaderFont.load('/font/roboto_regular.json', function (font) {
+			const textGeometry = new TextGeometry(backReturn(str.replaceAll(" ", "\r\r")), {
+				font: font,
+				size: 0.2,
+				height: 0.01,
+				bevelEnabled: true,
+				bevelSize: 0.00001,
+				bevelThickness: 0.01,
+
+			});
+
+
+			var textMesh = new THREE.Mesh(textGeometry, [
+				new THREE.MeshPhongMaterial({ emissive: "grey" }), new THREE.MeshPhongMaterial({ emissive: "grey" })
+			]);
+
+
+			texts.push(textMesh);
+			var center = getCenterPoint(textMesh);
+			textMesh.geometry.applyMatrix(new THREE.Matrix4().makeTranslation(-center.x, -center.y, -center.z));
+
+			if (!question)
+				textMesh.rotation.set(0, rot, 0);
+			else
+				textMesh.rotation.set(PI / 3, rot, 0);
+
+
+			textMesh.geometry.applyMatrix(new THREE.Matrix4().makeTranslation(-center.x, -center.y, -center.z));
+
+			lastScene.add(textMesh);
+			console.log(center);
+			textMesh.position.set(x - center.x, y - center.y, z - center.z); // position text here x, y, z
+
+			console.log("textMesh added to scene");
+			textMesh.castShadow = true; // object can cast shadows (default = false)
+			textMesh.receiveShadow = true; // object can receive shadows (default= false)
+
+			render(lastScene)
+		});
+	}
+	function addQuestion(str, x, y, z, rot, question) {
+		loaderFont.load('/font/roboto_regular.json', function (font) {
+			const textGeometry = new TextGeometry(backReturn(str.replaceAll(" ", "\r\r")), {
+				font: font,
+				size: 0.2,
+				height: 0.001,
+				bevelEnabled: true,
+				bevelSize: 0.00001,
+				bevelThickness: 0.01,
+
+			});
+
+
+			var textMesh = new THREE.Mesh(textGeometry, [
+				new THREE.MeshPhongMaterial({ emissive: "grey" }), new THREE.MeshPhongMaterial({ emissive: "grey" })
+			]);
+
+
+			texts.push(textMesh);
+			var center = getCenterPoint(textMesh);
+			textMesh.geometry.applyMatrix(new THREE.Matrix4().makeTranslation(-center.x, -center.y, -center.z));
+
+			if (!question)
+				textMesh.rotation.set(0, rot, 0);
+			else
+				textMesh.rotation.set(PI / 3, rot, 0);
+
+
+			textMesh.geometry.applyMatrix(new THREE.Matrix4().makeTranslation(-center.x, -center.y, -center.z));
+
+			lastScene.add(textMesh);
+			console.log(center);
+			textMesh.position.set(x - center.x, y - center.y, z - center.z); // position text here x, y, z
+
+			console.log("textMesh added to scene");
+			textMesh.castShadow = true; // object can cast shadows (default = false)
+			textMesh.receiveShadow = true; // object can receive shadows (default= false)
+
+			render(lastScene);
+		});
+	}
+
+
+
+
+
+
+
 
 	function reloadText() {
 		for (const tt of texts) {
